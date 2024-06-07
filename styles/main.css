@@ -1,0 +1,83 @@
+main {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: lightblue;
+}
+
+#players {
+    margin-top: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#player1,
+#player2 {
+    background-color: navy;
+    margin: 40px;
+    padding: 15px;
+    color: white;
+    font-size: large;
+    font-weight: 800;
+}
+
+
+#extra {
+    margin-top: 50px;
+    width: 83%;
+    background-color: yellow;
+    margin: auto;
+    height: 100px;
+    display: flex;
+    justify-content: end;
+}
+
+#refresh {
+    background-color: aquamarine;
+    padding: 20px;
+    margin: 15px;
+}
+
+#gameScreen {
+    background-color: purple;
+    height: 75vh;
+    width: 75%;
+    margin: auto;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+
+.board {
+    background-color: red;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.single_board {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    border: 2px solid black;
+    margin: 0;
+    padding: 0;
+}
