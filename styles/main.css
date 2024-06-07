@@ -3,6 +3,7 @@
     --lightBlue: #B8D3D1;
     --darkBlue: #353946;
     --darkGreen: #304A39;
+    --highlight: rgb(243, 243, 155);
 }
 
 main {
@@ -97,7 +98,18 @@ body {
 }
 
 .single_board:hover {
-    background-color: yellow;
+    background-color: var(--highlight);
+    color: black;
     transition: all;
     transition-duration: .75s;
+}
+
+.X {
+    background-color: var(--darkBlue);
+    color: white;
+}
+
+.O {
+    background-color: var(--orangeColor);
+    color: white;
 }
