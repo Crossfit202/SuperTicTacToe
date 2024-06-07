@@ -1,3 +1,10 @@
+:root {
+    --orangeColor: #C7752C;
+    --lightBlue: #B8D3D1;
+    --darkBlue: #353946;
+    --darkGreen: #304A39;
+}
+
 main {
     margin: 0;
     padding: 0;
@@ -14,7 +21,7 @@ header {
 }
 
 body {
-    background-color: lightblue;
+    background-color: var(--darkBlue);
 }
 
 #players {
@@ -27,7 +34,7 @@ body {
 
 #player1,
 #player2 {
-    background-color: navy;
+    background-color: var(--orangeColor);
     margin: 40px;
     padding: 15px;
     color: white;
@@ -39,7 +46,7 @@ body {
 #extra {
     margin-top: 50px;
     width: 83%;
-    background-color: yellow;
+    background-color: var(--orangeColor);
     margin: auto;
     height: 100px;
     display: flex;
@@ -47,37 +54,50 @@ body {
 }
 
 #refresh {
-    background-color: aquamarine;
+    background-color: white;
     padding: 20px;
     margin: 15px;
 }
 
 #gameScreen {
-    background-color: purple;
+    background-color: var(--lightBlue);
     height: 75vh;
     width: 75%;
     margin: auto;
     padding: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     column-gap: 50px;
     row-gap: 50px;
 }
 
 .board {
-    background-color: red;
-    padding: 50px;
+    background-color: black;
+    padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     row-gap: 10px;
     column-gap: 10px;
 }
 
 .single_board {
     background-color: white;
-    height: 100%;
-    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
     border: 2px solid black;
-    margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    font-weight: 900;
+    color: green;
+}
+
+.single_board:hover {
+    background-color: yellow;
+    transition: all;
+    transition-duration: .75s;
 }
