@@ -6,7 +6,8 @@
     --highlight: rgb(243, 243, 155);
 }
 
-main {
+main,
+* {
     margin: 0;
     padding: 0;
 }
@@ -17,13 +18,16 @@ header {
     border: 2px solid black;
     display: flex;
     justify-content: center;
-    margin: 0;
-    padding: 0;
+    padding: 50px;
 }
 
 body {
     background-color: var(--darkBlue);
+    padding: 0;
+    margin: 0;
 }
+
+
 
 #players {
     margin-top: 75px;
@@ -43,18 +47,22 @@ body {
     font-weight: 800;
 }
 
+.screen {
+    background-color: red;
+    width: 80%;
+    margin: auto;
+}
 
 #extra {
-    margin-top: 50px;
-    width: 83%;
     background-color: var(--orangeColor);
+    padding: 0;
     margin: auto;
     height: 100px;
     display: flex;
-    justify-content: end;
+    justify-content: space-around;
 }
 
-#refresh {
+button {
     background-color: white;
     padding: 20px;
     margin: 15px;
@@ -63,7 +71,6 @@ body {
 #gameScreen {
     background-color: var(--lightBlue);
     height: 75vh;
-    width: 75%;
     margin: auto;
     padding: 50px;
     display: grid;
