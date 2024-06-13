@@ -14,7 +14,7 @@ reset board button
 
 Cross:
 
-Checkwin(parameters, 1 board so that can be used for individual and whole board) function - board notifies you when a player has won the board. 
+Checkwin(parameters, 1 board so that it can be used for individual and whole board) function - board notifies you when a player has won the board. 
 if someone wins, you can't play on the board anymore and displays who won. 
 
 UPCOMING TASKS: 
