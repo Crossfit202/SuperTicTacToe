@@ -83,6 +83,10 @@ body {
     column-gap: 10px;
 }
 
+.highlight {
+    background-color: green;
+}
+
 .single_board {
     background-color: white;
     min-height: 100%;
