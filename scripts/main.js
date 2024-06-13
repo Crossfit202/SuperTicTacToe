@@ -1,10 +1,19 @@
 var lastMove = 'Blank';
 
 
+
 // 
 function Move() {
     var p1 = document.getElementById('p1').value;
     var p2 = document.getElementById('p2').value;
+
+    if (p1 === '') {
+        p1 = 'Player 1';
+    }
+
+    if (p2 === '') {
+        p2 = 'Player 2';
+    }
     var div = this;
     if (div.textContent == '') {
         if (lastMove === 'Blank') {
