@@ -6,6 +6,7 @@ var boards = document.getElementsByClassName('board');
 var spaces = document.getElementsByClassName('space');
 
 
+
 function checkWin(boardId) {
     const board = document.getElementById(boardId);
 
@@ -64,7 +65,7 @@ function checkAllBoards() {
 function Move() {
     var p1 = document.getElementById('p1').value;
     var p2 = document.getElementById('p2').value;
-
+    
 
     if (p1 === '') {
         p1 = 'Player 1';
@@ -74,30 +75,76 @@ function Move() {
         p2 = 'Player 2';
     }
     var div = this;
+    console.log(this);
+
     if (div.textContent == '') {
+        nextMoveLocation(this.classList.value);
         if (lastMove === 'Blank') {
             div.textContent = 'X';
-            div.classList.add('X')
+            div.classList.add('X');
             lastMove = 'X';
         } else if (lastMove === 'X') {
             div.textContent = 'O';
-            div.classList.add('O')
+            div.classList.add('O');
             lastMove = 'O';
         } else {
             div.textContent = 'X';
-            div.classList.add('X')
+            div.classList.add('X');
             lastMove = 'X';
 
         }
+
     }
 
-    checkAllBoards();
+    //checkAllBoards();
+}
+
+// Removes the Highlight class from all the boards at once
+function removeHighlight() {
+    for (let i = 0; i < boards.length; i++) {
+        boards[i].classList.remove('highlight');
+    }
 }
 
 // Highlights the board for the next location.
-function nextMoveLocation() {
-    var board = document.getElementsByClassName('board3')
-    board.classList.add('highlight');
+function nextMoveLocation(nextBoard) {
+    // Clear the currently highlighted board
+    removeHighlight();
+
+    // Add highlight class to the board that was selected
+    switch(nextBoard) {
+        case 'space a1':
+            document.getElementById('board1').classList.add('highlight');
+            break;
+        case 'space a2':
+            console.log(document.getElementById('board4'));
+            document.getElementById('board4').classList.add('highlight');
+            break;
+        case 'space a3':
+            document.getElementById('board7').classList.add('highlight');
+            break;
+        case 'space b1':
+            document.getElementById('board2').classList.add('highlight');
+            break;
+        case 'space b2':
+            document.getElementById('board5').classList.add('highlight');
+            break;
+        case 'space b3':
+            document.getElementById('board8').classList.add('highlight');
+            break;
+        case 'space c1':
+            document.getElementById('board3').classList.add('highlight');
+            break;
+        case 'space c2':
+            document.getElementById('board6').classList.add('highlight');
+            break;
+        case 'space c3':
+            document.getElementById('board9').classList.add('highlight');
+            break;
+        default:
+            // do nothing do we need default then?
+            break;
+    }
 
 
 }
