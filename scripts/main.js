@@ -4,11 +4,23 @@ var p2Score = 0;
 var won = false;
 var boards = document.getElementsByClassName('board');
 var spaces = document.getElementsByClassName('space');
+var moveCount = 0;
+var winners = []; // Array to store winners
 
 
+function checkBoard(boardID) {
+    console.log("in check board");
+    console.log(boardID);
+    for (var board in winners) {
+        console.log(board[1]);
+    }
+
+    return false;
+}
 
 function checkWin(boardId) {
     const board = document.getElementById(boardId);
+    var boardWinner = [];
 
     const a1 = board.querySelector('.a1').textContent.trim();
     const a2 = board.querySelector('.a2').textContent.trim();
@@ -33,12 +45,14 @@ function checkWin(boardId) {
 
     for (let combo of winningCombinations) {
         if (combo.every(cell => cell === 'X')) {
-            console.log(`Player X has won on ${boardId}!`);
-            return `Player X on ${boardId}`;
+            boardWinner.push('X');
+            boardWinner.push(boardId);
+            return boardWinner;
         }
         if (combo.every(cell => cell === 'O')) {
-            console.log(`Player O has won on ${boardId}!`);
-            return `Player O on ${boardId}`;
+            boardWinner.push('O');
+            boardWinner.push(boardId);
+            return boardWinner;
         }
     }
 
@@ -46,14 +60,17 @@ function checkWin(boardId) {
 }
 
 function checkAllBoards() {
-    let winners = []; // Array to store winners
 
     for (let i = 1; i <= 9; i++) {
         const boardId = `board${i}`;
         const winner = checkWin(boardId);
+
+        // if there's a winner add to the array
         if (winner) {
-            winners.push(winner);
-            console.log(winners);
+            if(!winners.includes(winner)){      // checks if winner is not already in array
+                winners.push(winner);
+                console.log(winners);
+            }
         }
     }
 
@@ -75,28 +92,41 @@ function Move() {
         p2 = 'Player 2';
     }
     var div = this;
-    console.log(this);
+    // console.log(this.parentNode.id);
 
-    if (div.textContent == '') {
+    if (moveCount === 0) {
         nextMoveLocation(this.classList.value);
-        if (lastMove === 'Blank') {
-            div.textContent = 'X';
-            div.classList.add('X');
-            lastMove = 'X';
-        } else if (lastMove === 'X') {
-            div.textContent = 'O';
-            div.classList.add('O');
-            lastMove = 'O';
-        } else {
-            div.textContent = 'X';
-            div.classList.add('X');
-            lastMove = 'X';
-
-        }
-
+        div.textContent = 'X';
+        div.classList.add('X');
+        lastMove = 'X';
+        moveCount++;
     }
+    else {
+        if (div.textContent == '') {
+            if (this.parentNode.classList[1] === 'highlight') {
+                console.log(this.parentNode.Id);
+                var isBoardClear = checkBoard(this.parentNode.Id);
+                nextMoveLocation(this.classList.value, isBoardClear);
+                if (lastMove === 'X') {
+                    div.textContent = 'O';
+                    div.classList.add('O');
+                    lastMove = 'O';
+                    moveCount++;
+                } else {
+                    div.textContent = 'X';
+                    div.classList.add('X');
+                    lastMove = 'X';
+                    moveCount++;
+        
+                }
+            }
+        }
+    }
+    
 
-    //checkAllBoards();
+        
+
+    checkAllBoards();
 }
 
 // Removes the Highlight class from all the boards at once
@@ -107,17 +137,23 @@ function removeHighlight() {
 }
 
 // Highlights the board for the next location.
-function nextMoveLocation(nextBoard) {
+function nextMoveLocation(nextBoard, isBoardClear) {
     // Clear the currently highlighted board
     removeHighlight();
+    console.log(isBoardClear);
 
     // Add highlight class to the board that was selected
     switch(nextBoard) {
         case 'space a1':
-            document.getElementById('board1').classList.add('highlight');
+            
+            // checkBoard(nextBoard.parentNode.id)
+            // if( checkBoard(nextBoard.parentNode.id)) {
+                // highlightExcept();
+            // } else {
+                document.getElementById('board1').classList.add('highlight');
+            // }
             break;
         case 'space a2':
-            console.log(document.getElementById('board4'));
             document.getElementById('board4').classList.add('highlight');
             break;
         case 'space a3':

@@ -9,20 +9,20 @@ pages site : https://crossfit202.github.io/SuperTicTacToe/
 ASSIGNED TASKS: 
 
 Maxwell: 
-next move function - highlight the board where the next move needs to be made
-reset board button
+Can only select from the highlighted board
+universal sizing for everything. (media queries? fixed widths and heights?)
 
 Cross:
-
+reset board button
 Checkwin(parameters, 1 board so that it can be used for individual and whole board) function - board notifies you when a player has won the board. 
-if someone wins, you can't play on the board anymore and displays who won. 
+
 
 UPCOMING TASKS: 
 
-- general amination and asthetics. 
+- general animation and asthetics. 
 - scoreboard displays and counters. "_____ has won" (storing variables with player names)
 - universal sizing for everything. (media queries? fixed widths and heights?)
-- Save and Load Game Feature
-
+- Save and Load Game Feature (database)
+- graphics over a board for a winner
 
 
