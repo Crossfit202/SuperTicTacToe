@@ -74,7 +74,14 @@ function checkAllBoards() {
 
         // if there's a winner add to the array
         if (winner) {
+            // add the winner overlay to the board
+            if (winner[0] === 'X'){
+                document.getElementById(winner[1]).classList.add('Xwon');
+            } else {
+                document.getElementById(winner[1]).classList.add('Owon');
+            }
 
+            // add the winner to winners array
             if (winners.length === 0) {             // if winners is empty just push the first winner
                 winners.push(winner);
             } else if (!checkBoard(winner[1])) {    // if winners is not empty, check if the winner is already in the array

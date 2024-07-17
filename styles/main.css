@@ -109,6 +109,14 @@ button:hover {
     background-color: green;
 }
 
+.Xwon {
+    opacity: 0.4;
+}
+
+.Owon {
+    opacity: 0.4;
+}
+
 
 .space {
     background-color: white;
