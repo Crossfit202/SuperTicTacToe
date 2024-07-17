@@ -7,17 +7,21 @@ var spaces = document.getElementsByClassName('space');
 var moveCount = 0;
 var winners = []; // Array to store winners
 
-
+// Takes a board ID and returns true or false if that board is in winners
 function checkBoard(boardID) {
-    console.log("in check board");
-    console.log(boardID);
-    for (var board in winners) {
-        console.log(board[1]);
+    // loop through winners array to see if it matches board ID
+    for (var i = 0; i < winners.length; i++) {
+        if (winners[i][1] === boardID) {
+            return true;
+        }
     }
 
     return false;
 }
 
+// Takes a board ID and checks if that board has a winner or not
+// Returns an array of [winner, boardID] ex. ['X', 'board1']
+// otherwise returns null
 function checkWin(boardId) {
     const board = document.getElementById(boardId);
     var boardWinner = [];
@@ -59,6 +63,8 @@ function checkWin(boardId) {
     return null; // No winner
 }
 
+// Runs through all the boards looking for new winners and adds them
+// to the winners list
 function checkAllBoards() {
 
     for (let i = 1; i <= 9; i++) {
@@ -67,9 +73,11 @@ function checkAllBoards() {
 
         // if there's a winner add to the array
         if (winner) {
-            if(!winners.includes(winner)){      // checks if winner is not already in array
+
+            if (winners.length === 0) {             // if winners is empty just push the first winner
                 winners.push(winner);
-                console.log(winners);
+            } else if (!checkBoard(winner[1])) {    // if winners is not empty, check if the winner is already in the array
+                winners.push(winner);
             }
         }
     }
@@ -82,6 +90,9 @@ function checkAllBoards() {
 function Move() {
     var p1 = document.getElementById('p1').value;
     var p2 = document.getElementById('p2').value;
+    checkAllBoards();
+    console.log(winners);
+    console.log(winners.length);
     
 
     if (p1 === '') {
@@ -104,9 +115,7 @@ function Move() {
     else {
         if (div.textContent == '') {
             if (this.parentNode.classList[1] === 'highlight') {
-                console.log(this.parentNode.Id);
-                var isBoardClear = checkBoard(this.parentNode.Id);
-                nextMoveLocation(this.classList.value, isBoardClear);
+                nextMoveLocation(this.classList.value, this.parentNode.id);
                 if (lastMove === 'X') {
                     div.textContent = 'O';
                     div.classList.add('O');
@@ -126,7 +135,7 @@ function Move() {
 
         
 
-    checkAllBoards();
+
 }
 
 // Removes the Highlight class from all the boards at once
@@ -136,46 +145,87 @@ function removeHighlight() {
     }
 }
 
+// highlights everyboard that is playable.
+function highlightPlayableBoards() {
+    if (winners.length ) {
+        console.log('in winners length if')
+        for (let i = 0; i < boards.length; i++) {
+            if (!checkBoard(boards[i].id)) {
+                document.getElementById(boards[i].id).classList.add('highlight');
+            }
+        }
+    }
+}
+
 // Highlights the board for the next location.
-function nextMoveLocation(nextBoard, isBoardClear) {
+function nextMoveLocation(nextBoard, currentBoard) {
     // Clear the currently highlighted board
     removeHighlight();
-    console.log(isBoardClear);
 
     // Add highlight class to the board that was selected
     switch(nextBoard) {
         case 'space a1':
-            
-            // checkBoard(nextBoard.parentNode.id)
-            // if( checkBoard(nextBoard.parentNode.id)) {
-                // highlightExcept();
-            // } else {
+            if(!checkBoard(currentBoard)) {
                 document.getElementById('board1').classList.add('highlight');
-            // }
+            } else {
+                highlightPlayableBoards();
+            }
             break;
         case 'space a2':
-            document.getElementById('board4').classList.add('highlight');
+            if(!checkBoard(currentBoard)) {
+                document.getElementById('board4').classList.add('highlight');
+            } else {
+                highlightPlayableBoards();
+            }
             break;
         case 'space a3':
-            document.getElementById('board7').classList.add('highlight');
+            if(!checkBoard(currentBoard)) {
+                document.getElementById('board7').classList.add('highlight');
+            } else {
+                highlightPlayableBoards();
+            }    
             break;
         case 'space b1':
-            document.getElementById('board2').classList.add('highlight');
+            // if(checkBoard(currentBoard)) {
+                document.getElementById('board2').classList.add('highlight');
+            // } else {
+            //     highlightPlayableBoards();
+            // }
             break;
         case 'space b2':
-            document.getElementById('board5').classList.add('highlight');
+            // if(checkBoard(currentBoard)) {
+                document.getElementById('board5').classList.add('highlight');
+            // } else {
+            //     highlightPlayableBoards();
+            // }
             break;
         case 'space b3':
-            document.getElementById('board8').classList.add('highlight');
+            // if(checkBoard(currentBoard)) {
+                document.getElementById('board8').classList.add('highlight');
+            // } else {
+            //     highlightPlayableBoards();
+            // }
             break;
         case 'space c1':
-            document.getElementById('board3').classList.add('highlight');
+            // if(checkBoard(currentBoard)) {
+                document.getElementById('board3').classList.add('highlight');
+            // } else {
+            //     highlightPlayableBoards();
+            // }
             break;
         case 'space c2':
-            document.getElementById('board6').classList.add('highlight');
+            // if(checkBoard(currentBoard)) {
+                document.getElementById('board6').classList.add('highlight');
+            // } else {
+            //     highlightPlayableBoards();
+            // }
             break;
         case 'space c3':
-            document.getElementById('board9').classList.add('highlight');
+            // if(checkBoard(currentBoard)) {
+                document.getElementById('board9').classList.add('highlight');
+            // } else {
+            //     highlightPlayableBoards();
+            // }
             break;
         default:
             // do nothing do we need default then?
