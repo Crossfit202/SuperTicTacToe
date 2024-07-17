@@ -10,6 +10,7 @@ var winners = []; // Array to store winners
 // Takes a board ID and returns true or false if that board is in winners
 function checkBoard(boardID) {
     // loop through winners array to see if it matches board ID
+    console.log(boardID);
     for (var i = 0; i < winners.length; i++) {
         if (winners[i][1] === boardID) {
             return true;
@@ -85,14 +86,10 @@ function checkAllBoards() {
 
 }
 
-
-// 
+// Accomplishes a move for clicking a certain space
 function Move() {
     var p1 = document.getElementById('p1').value;
     var p2 = document.getElementById('p2').value;
-    checkAllBoards();
-    console.log(winners);
-    console.log(winners.length);
     
 
     if (p1 === '') {
@@ -115,7 +112,7 @@ function Move() {
     else {
         if (div.textContent == '') {
             if (this.parentNode.classList[1] === 'highlight') {
-                nextMoveLocation(this.classList.value, this.parentNode.id);
+                nextMoveLocation(this.classList.value);
                 if (lastMove === 'X') {
                     div.textContent = 'O';
                     div.classList.add('O');
@@ -131,10 +128,8 @@ function Move() {
             }
         }
     }
-    
-
         
-
+    checkAllBoards();
 
 }
 
@@ -157,75 +152,53 @@ function highlightPlayableBoards() {
     }
 }
 
-// Highlights the board for the next location.
-function nextMoveLocation(nextBoard, currentBoard) {
+// Highlights the next board
+function highlightNextBoard(nextBoard) {
+
+    // if next boards isn't already one highlight it otherwise highlight
+    // all of the playable boards
+    if(!checkBoard(nextBoard)) {
+        document.getElementById(nextBoard).classList.add('highlight');
+    } else {
+        highlightPlayableBoards();
+    }
+
+}
+
+// Resolves the next move location and runs highlightNextBoard
+// to highlight the next board
+function nextMoveLocation(nextBoard) {
     // Clear the currently highlighted board
     removeHighlight();
 
     // Add highlight class to the board that was selected
     switch(nextBoard) {
         case 'space a1':
-            if(!checkBoard(currentBoard)) {
-                document.getElementById('board1').classList.add('highlight');
-            } else {
-                highlightPlayableBoards();
-            }
+            highlightNextBoard('board1');
             break;
         case 'space a2':
-            if(!checkBoard(currentBoard)) {
-                document.getElementById('board4').classList.add('highlight');
-            } else {
-                highlightPlayableBoards();
-            }
+            highlightNextBoard('board4');
             break;
         case 'space a3':
-            if(!checkBoard(currentBoard)) {
-                document.getElementById('board7').classList.add('highlight');
-            } else {
-                highlightPlayableBoards();
-            }    
+            highlightNextBoard('board7');  
             break;
         case 'space b1':
-            // if(checkBoard(currentBoard)) {
-                document.getElementById('board2').classList.add('highlight');
-            // } else {
-            //     highlightPlayableBoards();
-            // }
+            highlightNextBoard('board2');
             break;
         case 'space b2':
-            // if(checkBoard(currentBoard)) {
-                document.getElementById('board5').classList.add('highlight');
-            // } else {
-            //     highlightPlayableBoards();
-            // }
+            highlightNextBoard('board5');
             break;
         case 'space b3':
-            // if(checkBoard(currentBoard)) {
-                document.getElementById('board8').classList.add('highlight');
-            // } else {
-            //     highlightPlayableBoards();
-            // }
+            highlightNextBoard('board8');
             break;
         case 'space c1':
-            // if(checkBoard(currentBoard)) {
-                document.getElementById('board3').classList.add('highlight');
-            // } else {
-            //     highlightPlayableBoards();
-            // }
+            highlightNextBoard('board3');
             break;
         case 'space c2':
-            // if(checkBoard(currentBoard)) {
-                document.getElementById('board6').classList.add('highlight');
-            // } else {
-            //     highlightPlayableBoards();
-            // }
+            highlightNextBoard('board6');
             break;
         case 'space c3':
-            // if(checkBoard(currentBoard)) {
-                document.getElementById('board9').classList.add('highlight');
-            // } else {
-            //     highlightPlayableBoards();
-            // }
+            highlightNextBoard('board9');
             break;
         default:
             // do nothing do we need default then?
