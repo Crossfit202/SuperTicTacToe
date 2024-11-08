@@ -24,5 +24,6 @@ UPCOMING TASKS:
 - universal sizing for everything. (media queries? fixed widths and heights?)
 - Save and Load Game Feature (database)
 - graphics over a board for a winner
+- Could be cool to create a speed simultaneous head-to-head mode. Player 1 and 2 can click whatever they want whenever they want and you have to watch the other person while doing your own thing? 
 
 
