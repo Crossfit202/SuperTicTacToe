@@ -27,3 +27,8 @@ UPCOMING TASKS:
 - Could be cool to create a speed simultaneous head-to-head mode. Player 1 and 2 can click whatever they want whenever they want and you have to watch the other person while doing your own thing? 
 
 
+Board layout
+
+A1 B1 C1
+A2 B2 C2
+A3 B3 C3
